@@ -1,0 +1,134 @@
+//COLORS
+$marine-blue :hsl(213, 96%, 18%);
+$purplish-blue:hsl(243, 100%, 62%);
+$pastel-blue: hsl(228, 100%, 84%);
+$light-blue: hsl(206, 94%, 87%);
+$strawberry-red:  hsl(354, 84%, 57%);
+
+$cool-gray:hsl(231, 11%, 63%);
+$light-gray: hsl(229, 24%, 87%);
+$magnolia: hsl(217, 100%, 97%);
+$alabaster:hsl(231, 100%, 99%);
+$white: hsl(0, 0%, 100%);
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Ubuntu";
+    font-size: 16px;
+}
+body {
+    background-color: $magnolia;
+
+}
+.hide {
+    display: none;
+}
+
+.flex-container {
+    display: flex;
+}
+.round-edge {
+    border-radius: 16px;
+}
+
+.sidebar {
+    background-color: $pastel-blue;
+    color: $alabaster;
+
+}
+.step-text-container {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.step-title {
+    color: $cool-gray;
+}
+.step-number {
+    border-radius: 300px;
+    border: 2px solid $white;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 31px;
+}
+
+.step-number .active {
+    color: black;
+    border: none;
+    background-color: $light-blue;
+}
+
+.survey-container {
+    background-color: $alabaster;
+    padding: 16px;
+}
+label, h1 {
+    color: $marine-blue;
+}
+h1 {
+    font-size: 24px;
+    margin: 1em 0em;
+}
+.subtitle {
+    color: $cool-gray;
+    margin-bottom: 2em;
+}
+
+
+
+//MEDIA QUERIES
+
+//Smartphones
+@media only screen and (max-width:425px) {
+    .sidebar {
+        gap: 20px;
+        justify-content: space-around;
+        background-image: url(./assets/images/bg-sidebar-mobile.svg);
+    }
+    .survey-container {
+        flex-direction: column;
+        
+    }
+    .step-text-container {
+        display: none;
+    }
+}
+
+//Ipads
+@media only screen and (min-width:426px) and (max-width:980px){
+
+}
+
+//Larger than Ipad
+@media screen and (min-width:426px){
+    body {
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .survey-container{
+        flex-direction: row;
+    }
+    .sidebar {
+        flex-direction: column;
+        padding: 1em;
+        gap: 24px;
+        background-image: url(./assets/images/bg-sidebar-desktop.svg);
+    }
+    .main-form-wrapper {
+        margin-left: 24px;
+    }
+    .step-text-container {
+        margin-left: 16px;
+    }
+}
+
+//Larger Devices
+@media only screen and (min-width:981px){
+    .sidebar {
+        min-width: 200px;
+    }
+}
