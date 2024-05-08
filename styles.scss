@@ -20,6 +20,7 @@ $white: hsl(0, 0%, 100%);
 }
 body {
     background-color: $magnolia;
+    overflow: hidden;
 
 }
 .hide {
@@ -36,6 +37,8 @@ body {
 .sidebar {
     background-color: $pastel-blue;
     color: $alabaster;
+    background-size: cover;
+    background-repeat: no-repeat;
 
 }
 .step-text-container {
@@ -43,21 +46,24 @@ body {
     font-size: 14px;
 }
 .step-title {
-    color: $cool-gray;
+    color: $pastel-blue;
 }
 .step-number {
     border-radius: 300px;
-    border: 2px solid $white;
+    outline: 1px solid $white;
     height: 35px;
     width: 35px;
+    min-width: 35px;
+    min-height: 35px;
     text-align: center;
     vertical-align: middle;
-    line-height: 31px;
+    line-height: 35px;
+    font-weight: 500;
 }
 
-.step-number .active {
-    color: black;
-    border: none;
+.step-container > .active-step {
+    color: black; 
+    outline: none;
     background-color: $light-blue;
 }
 
@@ -69,13 +75,140 @@ label, h1 {
     color: $marine-blue;
 }
 h1 {
-    font-size: 24px;
-    margin: 1em 0em;
+    font-size: 32px;
+    margin: .5em 0em;
 }
 .subtitle {
     color: $cool-gray;
     margin-bottom: 2em;
 }
+.personal-info-container, .main-form-wrapper {
+    flex-direction: column;
+}
+form {
+
+    label {
+        margin-bottom: .5em;
+    }
+    input[type="text"] {
+        border-radius: 8px;
+        border: none;
+        outline: 1px solid $cool-gray;
+        height: 3em;
+        padding-left: 1em;
+        margin-bottom: 1.5em;
+        color: $marine-blue;
+        font-size: 16px;
+    }
+    input[type="text"]:focus {
+        outline: 2px solid $purplish-blue;
+        background-color: $magnolia;
+    }
+    ::placeholder {
+        color: $cool-gray;
+    }
+
+}
+
+.go-next {
+    color: $alabaster;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    background-color: $marine-blue;
+    width: fit-content;
+    padding: 1em 2em;
+}
+
+.go-back {
+    color: $cool-gray;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    background-color: $alabaster;
+    width: fit-content;
+    padding: 1em 2em;
+}
+.nav-btns {
+    margin-top: auto;
+    justify-content: space-between;
+    button {
+        max-height: 3em;
+    }
+}
+
+
+
+//Toggle Switch logic THIS IS MODULAR
+.payment-toggle-switch {
+    background-color: $magnolia;
+    align-items: center;
+    justify-content: center;
+    //Modular Logic starts here
+    .switch {
+    margin: 8px;
+    position: relative;
+    display: inline-block;
+    width: 2.4em;
+    height: 1.4em;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    --slider-width: 1em;
+    //4px margins around 
+    left: 3px;
+    bottom: .2em;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    input:checked + .slider {
+    background-color: $marine-blue;
+    }
+
+    input:focus + .slider {
+    box-shadow: 0 0 1px $marine-blue;
+    }
+
+    input:checked + .slider:before {
+    -webkit-transform: translateX(var(--slider-width));
+    -ms-transform: translateX(var(--slider-width));
+    transform: translateX(var(--slider-width));
+    }
+
+    .slider.round {
+        border-radius: 34px;
+    }
+    
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+}
+
 
 
 
@@ -83,52 +216,116 @@ h1 {
 
 //Smartphones
 @media only screen and (max-width:425px) {
+    form {
+        background-color: $alabaster;
+    }
     .sidebar {
         gap: 20px;
-        justify-content: space-around;
+        justify-content: center;
         background-image: url(./assets/images/bg-sidebar-mobile.svg);
+        border-radius: 0;
+        width: 100vw;
+        height: 150px;
+        position: absolute;
+        margin: -16px;
+        align-items: center;
+        
+        .step-container {
+            position:relative;
+            bottom: 30px;
+        }
     }
     .survey-container {
         flex-direction: column;
-        
+        background-color: none;
     }
     .step-text-container {
         display: none;
+    }
+    .main-form-wrapper {
+        position: relative;
+        background-color: $alabaster;
+        border-radius: 16px;
+        padding: 16px;
+        top: 70px;
+    }
+    .payment-type {
+        flex-direction: row;
+    }
+    .nav-btns {
+        position: fixed;
+        bottom: 20px;
+        right: 0;
+        width: 100%;
+        height: 60px;
+        align-items: center;
+        margin-top: auto;
+        background-color: $alabaster;
+        justify-content: space-between;
+        padding: 0 2em;
+        button {
+            font-size: 14px;
+            padding: 1em;
+            border-radius: 4px;
+        }
     }
 }
 
 //Ipads
 @media only screen and (min-width:426px) and (max-width:980px){
-
+    main {
+        transform: scale(0.7);
+    }
 }
 
-//Larger than Ipad
+//Larger than phone
 @media screen and (min-width:426px){
     body {
         align-items: center;
         justify-content: center;
         height: 100vh;
     }
+    form {
+        input[type="text"]{
+            font-size: 18px;
+        }
+    }
     .survey-container{
         flex-direction: row;
     }
     .sidebar {
         flex-direction: column;
-        padding: 1em;
+        padding: 2.5em;
         gap: 24px;
         background-image: url(./assets/images/bg-sidebar-desktop.svg);
+        min-height: 500px;
+        max-height: 560px;
     }
     .main-form-wrapper {
-        margin-left: 24px;
+        .form-container {
+            margin: 2em 7em;
+        }
+        .nav-btns {
+            margin: 0em 7em;
+        }
     }
     .step-text-container {
         margin-left: 16px;
     }
+    .step-title {
+        font-size:14px;
+        font-weight: 400;
+    }
+    .step-info {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
 }
 
 //Larger Devices
 @media only screen and (min-width:981px){
     .sidebar {
-        min-width: 200px;
+        min-width: 270px;
     }
 }

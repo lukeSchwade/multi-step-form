@@ -19,7 +19,7 @@
     <div class="sidebar flex-container round-edge">
       
         <div class="step-container flex-container">
-          <div class="step-number active">1</div>
+          <div class="step-number active-step">1</div>
           <div class="step-text-container">
             <div class="step-title">Step 1</div>
             <div class="step-info">Your info</div>
@@ -52,104 +52,120 @@
     </div>
     
       <!-- Sidebar end -->
-    <div class="main-form-wrapper">
+    <div class="main-form-wrapper flex-container">
       
         <!-- Step 1 start -->
-      
-        <div class="form-container" id="1">
-          <h1>Personal info</h1>
-          <div class="subtitle">Please provide your name, email address, and phone number.</div>
+      <form id="full-form" autocomplete="on">
         
-          <form>
-            <label for="fullName">Name</label><br>
-            <input type="text" id="fullName" placeholder="e.g. Stephen King" required><br>
+          <div class="form-container" id="1PersonalInfo">
+            <h1>Personal info</h1>
+            <div class="subtitle">Please provide your name, email address, and phone number.</div>
           
-            <label for="email">Email Address</label> <br>
-            <input type="text" id="email" placeholder="e.g stephenking@lorem.com" required><br>
+            <div class="flex-container personal-info-container">
+              <label for="name">Name</label>
+              <input type="text" id="fullName" placeholder="e.g. Stephen King" autocomplete="name" required>
+            
+              <label for="email">Email Address</label>
+              <input type="text" id="email" placeholder="e.g stephenking@lorem.com" autocomplete="email" required>
+            
+              <label for="phoneNum">Phone Number</label>
+              <input type="text" placeholder="e.g. +1 234 567 890" autocomplete="tel" required>
+              
+            </div>
           
-            <label for="phoneNum">Phone Number</label><br>
-            <input type="text" placeholder="e.g. +1 234 567 890" required><br>
-            <input type="submit" value="Next Step">
-          </form>
+            <!-- <button class>Next Step</button> -->
+          
+          </div>
+          <!-- Step 1 end -->
         
-          <button>Next Step</button>
+          <!-- Step 2 start -->
         
-        </div>
-        <!-- Step 1 end -->
-      
-        <!-- Step 2 start -->
-      
-        <div class="form-container hide" id="2">
-          <h1>Select your plan</h1>
-          <div class="subtitle">You have the option of monthly or yearly billing.</div>
+          <div class="form-container hide" id="2PaymentPlan">
+            <h1>Select your plan</h1>
+            <div class="subtitle">You have the option of monthly or yearly billing.</div>
+          
+            <div class="payment-type flex-container">
+              
+              <input type="radio" id="arcade-plan" name="planType"  value="arcade">
+                <label for="arcade-plan">
+                  <div>Arcade</div>
+                  <div class="payment-rate">$9/mo</div>
+                </label>
+              </input>
+            
+              <input type="radio" id="advanced-plan" name="planType" value="advanced">
+                <label for="advanced-plan">
+                  <div>Advanced</div>
+                  <div class="payment-rate">$12/mo</div>
+                </label>
+              </input>
+            
+              <input type="radio" id="pro-plan" name="planType" value="pro">
+                <label for="pro-plan">
+                  <div>Pro</div>
+                  <div class="payment-rate">$15/mo</div>
+                </label>
+              </input>
+            </div>
+          
+            <div class="payment-toggle-switch flex-container">
+              <span class="monthly">Monthly</span>
+              <div class="toggle-btn monthly-yearly">
+                
+                <label class="switch"> 
+                    <input class="checkbox" type="checkbox" name="payment-plan">
+                    <span class="slider round"></span>
+                </label>
+                
+              </div>
+              <span class="yearly">Yearly</span>
+            </div>
+          
+
+          
+          </div>
+          <!-- Step 2 end -->
         
-          <input type="radio" id="arcade-plan" name="planType">
-            Arcade
-            $9/mo
-          </input>
+          <!-- Step 3 start -->
         
-          <input type="radio" id="advanced-plan">
-            Advanced
-            $12/mo
-          </input>
-        
-          <input type="radio" id="pro-plan">
-            Pro
-            $15/mo
-          </input>
-        
-          <div class="payment-toggle-switch flex-container">
-            <span class="monthly">Monthly</span>
-            <button type="button"
-            <span class="yearly">Yearly</span>
+          <div class="form-container hide" id="3AddOns">
+            <h1>Pick add-ons</h1>
+            <div class="subtitle">Add-ons help enhance your gaming experience.</div>
+          
+            Online service
+            Access to multiplayer games
+            +$1/mo
+          
+            Larger storage
+            Extra 1TB of cloud save
+            +$2/mo
+          
+            Customizable Profile
+            Custom theme on your profile
+            +$2/mo
+          
+
           </div>
         
-          <button class="go-back round-edge">Go Back</button>
-          <button class="go-next round-edge">Next Step</button>
+          <!-- Step 3 end -->
         
-        </div>
-        <!-- Step 2 end -->
-      
-        <!-- Step 3 start -->
-      
-        <div class="form-container hide" id="3">
-          <h1>Pick add-ons</h1>
-          <div class="subtitle">Add-ons help enhance your gaming experience.</div>
+          <!-- Step 4 start -->
         
-          Online service
-          Access to multiplayer games
-          +$1/mo
-        
-          Larger storage
-          Extra 1TB of cloud save
-          +$2/mo
-        
-          Customizable Profile
-          Custom theme on your profile
-          +$2/mo
-        
-          <button class="go-back round-edge">Go Back</button>
-          <button class="go-next round-edge">Next Step</button>
-        </div>
-      
-        <!-- Step 3 end -->
-      
-        <!-- Step 4 start -->
-      
-        <div class="form-container hide" id="4">
-          <h1>Finishing up</h1>
-          <div class="subtitle">Double-check everything looks OK before confirming.</div>
-        
-          <!-- Dynamically add subscription and add-on selections here -->
-        
-          Total (per month/year)
-        
-          Go Back
-          <button >Confirm</button>
-        
-          <!-- Step 4 end -->
-        
-        </div>
+          <div class="form-container hide" id="4Summary">
+            <h1>Finishing up</h1>
+            <div class="subtitle">Double-check everything looks OK before confirming.</div>
+          
+            <!-- Dynamically add subscription and add-on selections here -->
+          
+            Total (per month/year)
+          
+            Go Back
+            <input type="submit" value="submit" class="go-next">
+          
+            <!-- Step 4 end -->
+          
+          </div>
+      </form>
         <!-- Step 5 start -->
       
         <div class="form-container hide" id="5">
@@ -163,6 +179,10 @@
         </div>
       
         <!-- Step 5 end -->
+        <div class="nav-btns flex-container">
+          <button class="go-back round-edge">Go Back</button>
+          <button class="go-next round-edge">Next Step</button>
+        </div>
     </div>
   </main>
   
