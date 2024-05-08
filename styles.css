@@ -15,6 +15,10 @@ body {
   display: none;
 }
 
+.form-container {
+  display: none;
+}
+
 .flex-container {
   display: flex;
 }
@@ -102,7 +106,7 @@ form ::placeholder {
   color: hsl(231, 11%, 63%);
 }
 
-.go-next {
+.go-next, .submit-btn {
   color: hsl(231, 100%, 99%);
   border: 0;
   outline: 0;
@@ -253,6 +257,9 @@ form ::placeholder {
     justify-content: center;
     height: 100vh;
   }
+  form {
+    flex: 1;
+  }
   form input[type=text] {
     font-size: 18px;
   }
@@ -266,6 +273,9 @@ form ::placeholder {
     background-image: url(./assets/images/bg-sidebar-desktop.svg);
     min-height: 500px;
     max-height: 560px;
+  }
+  .main-form-wrapper {
+    min-width: 570px;
   }
   .main-form-wrapper .form-container {
     margin: 2em 7em;
