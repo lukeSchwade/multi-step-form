@@ -62,19 +62,19 @@
         <!-- Step 1 start -->
       <form id="fullForm" autocomplete="on">
         
-          <div class="form-container" id="1PersonalInfo">
+          <div class="form-container" id="PersonalInfo1">
             <h1>Personal info</h1>
             <div class="subtitle">Please provide your name, email address, and phone number.</div>
           
             <div class="flex-container personal-info-container">
               <label for="name">Name</label>
-              <input type="text" id="fullName" placeholder="e.g. Stephen King" autocomplete="name" required>
+              <input type="text" id="name" placeholder="e.g. Stephen King" autocomplete="name" required>
             
               <label for="email">Email Address</label>
               <input type="text" id="email" placeholder="e.g stephenking@lorem.com" autocomplete="email" required>
             
-              <label for="phoneNum">Phone Number</label>
-              <input type="text" placeholder="e.g. +1 234 567 890" autocomplete="tel" required>
+              <label for="telephone">Phone Number</label>
+              <input type="text" id="telephone" placeholder="e.g. +1 234 567 890" autocomplete="tel" required>
               
             </div>
           
@@ -85,32 +85,53 @@
         
           <!-- Step 2 start -->
         
-          <div class="form-container" id="2PaymentPlan">
+          <div class="form-container" id="PaymentPlan2">
             <h1>Select your plan</h1>
             <div class="subtitle">You have the option of monthly or yearly billing.</div>
           
             <div class="payment-type flex-container">
-              
-              <input type="radio" id="arcade-plan" name="planType"  value="arcade">
-                <label for="arcade-plan">
-                  <div>Arcade</div>
-                  <div class="payment-rate">$9/mo</div>
-                </label>
-              </input>
-            
-              <input type="radio" id="advanced-plan" name="planType" value="advanced">
-                <label for="advanced-plan">
-                  <div>Advanced</div>
-                  <div class="payment-rate">$12/mo</div>
-                </label>
-              </input>
-            
-              <input type="radio" id="pro-plan" name="planType" value="pro">
-                <label for="pro-plan">
-                  <div>Pro</div>
-                  <div class="payment-rate">$15/mo</div>
-                </label>
-              </input>
+              <div class="container round-edge">
+                  <input type="radio" id="arcade-plan" name="planType"  value="arcade" checked>
+                    <label for="arcade-plan">
+                      <div class="flex-container payment-button">
+                        <img class="payment-icon" src="./assets/images/icon-arcade.svg" alt="arcade">
+                        <div>
+                          <h2>Arcade</h2>
+                          <div class="payment-rate rate">$9/mo</div>
+                          <div class="discount">2 months free</div>
+                        </div>
+                      </div>
+                    </label>
+                  </input>
+              </div>
+              <div class="container round-edge">
+                  <input type="radio" id="advanced-plan" name="planType" value="advanced">
+                    <label for="advanced-plan">
+                      <div class="flex-container payment-button">
+                        <img class="payment-icon" src="./assets/images/icon-advanced.svg" alt="advanced">
+                        <div>
+                          <h2>Advanced</h2>
+                          <div class="payment-rate rate">$12/mo</div>
+                          <div class="discount">2 months free</div>
+                        </div>
+                      </div>
+                    </label>
+                  </input>
+              </div>
+              <div class="container round-edge">
+                <input type="radio" id="pro-plan" name="planType" value="pro">
+                  <label for="pro-plan">
+                    <div class="flex-container payment-button">
+                      <img class="payment-icon" src="./assets/images/icon-pro.svg" alt="pro">
+                      <div>
+                        <h2>Pro</h2>
+                        <div class="payment-rate rate">$15/mo</div>
+                        <div class="discount">2 months free</div>
+                      </div>
+                    </div>
+                  </label>
+                </input>
+              </div>
             </div>
           
             <div class="payment-toggle-switch flex-container">
@@ -133,21 +154,36 @@
         
           <!-- Step 3 start -->
         
-          <div class="form-container" id="3AddOns">
+          <div class="form-container" id="Addons3">
             <h1>Pick add-ons</h1>
             <div class="subtitle">Add-ons help enhance your gaming experience.</div>
           
-            Online service
-            Access to multiplayer games
-            +$1/mo
+            <label class="add-on-btn flex-container">
+              <input class = "add-on-checkbox" type="checkbox" name="multiplayer">
+                <div>
+                  <h2>Online service</h2>
+                  <p>Access to multiplayer games</p>
+                </div>
+                <div class="additional-charge rate">$1/mo</div>
+            </label>
+
+            <label class="add-on-btn flex-container">
+              <input class = "add-on-checkbox" type="checkbox" name="storage">
+              <div>
+                <h2>Larger storage</h2>
+                <p>Extra 1TB of cloud save</p>
+              </div>
+              <div class="additional-charge">$2/mo</div>
+            </label>
           
-            Larger storage
-            Extra 1TB of cloud save
-            +$2/mo
-          
-            Customizable Profile
-            Custom theme on your profile
-            +$2/mo
+            <label class="add-on-btn flex-container">
+              <input class = "add-on-checkbox" type="checkbox" name="customProfile">
+              <div>
+                <h2>Customizable Profile</h2>
+                <p>Custom theme on your profile</p>
+              </div>
+              <div class="additional-charge rate">$2/mo</div>
+            </label>
           
 
           </div>
@@ -156,13 +192,34 @@
         
           <!-- Step 4 start -->
         
-          <div class="form-container" id="4Summary">
+          <div class="form-container" id="Summary4">
             <h1>Finishing up</h1>
             <div class="subtitle">Double-check everything looks OK before confirming.</div>
-          
+            <div class="final-invoice">
+              <div class="colored-box">
+                
+                <div class="flex-container price-row">
+                  <div>
+                    <h2>Plan (Interval)</h2>
+                    <p>Change</p>
+                  </div>
+                  <h2 class="plan-total price-point">$9/mo</h2>
+                </div>
+                <hr>
+                <div class="flex-container price-row">
+                  <p>This is a placeholder</p>
+                  <div class="price-point additional-charge">$9/mo</div>
+                </div>
+                
+              </div>
+              <div class="final-total">
+                <p>Total (per <span class="interval">month</span>)</p>
+                <div></div>
+              </div>
+            </div>
             <!-- Dynamically add subscription and add-on selections here -->
           
-            Total (per month/year)
+            
                     
             <!-- Step 4 end -->
           
@@ -170,13 +227,16 @@
       </form>
         <!-- Step 5 start -->
       
-        <div class="form-container" id="5Thanks">
-          <h1>Thank you!</h1>
-        
-          <div class="subtitle">
-            Thanks for confirming your subscription! We hope you have fun 
-            using our platform. If you ever need support, please feel free 
-            to email us at support@loremgaming.com.
+        <div class="form-container thanks" id="Thanks5">
+          <div class="container flex-container">
+            <img src="./assets/images/icon-thank-you.svg" alt="thanks">
+            <h1>Thank you!</h1>
+          
+            <div class="subtitle">
+              Thanks for confirming your subscription! We hope you have fun 
+              using our platform. If you ever need support, please feel free 
+              to email us at support@loremgaming.com.
+            </div>
           </div>
         </div>
       

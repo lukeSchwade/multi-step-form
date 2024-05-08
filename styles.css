@@ -9,6 +9,15 @@
 body {
   background-color: hsl(217, 100%, 97%);
   overflow: hidden;
+  justify-content: center;
+}
+
+p {
+  color: hsl(231, 11%, 63%);
+}
+
+h2 {
+  color: hsl(213, 96%, 18%);
 }
 
 .hide {
@@ -63,7 +72,6 @@ body {
 }
 
 .survey-container {
-  background-color: hsl(231, 100%, 99%);
   padding: 16px;
 }
 
@@ -105,39 +113,167 @@ form input[type=text]:focus {
 form ::placeholder {
   color: hsl(231, 11%, 63%);
 }
-
-.go-next, .submit-btn {
-  color: hsl(231, 100%, 99%);
-  border: 0;
-  outline: 0;
-  border-radius: 8px;
-  background-color: hsl(213, 96%, 18%);
-  width: fit-content;
-  padding: 1em 2em;
-}
-
-.go-back {
-  color: hsl(231, 11%, 63%);
-  border: 0;
-  outline: 0;
-  border-radius: 8px;
-  background-color: hsl(231, 100%, 99%);
-  width: fit-content;
-  padding: 1em 2em;
-}
-
-.nav-btns {
-  margin-top: auto;
+form .payment-type {
   justify-content: space-between;
+  align-items: stretch;
+  gap: 1em;
 }
-.nav-btns button {
-  max-height: 3em;
+form .payment-type input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+form .payment-type .container {
+  flex: 1;
+  cursor: pointer;
+  outline: 1px hsl(229, 24%, 87%) solid;
+  background-color: hsl(231, 100%, 99%);
+  transition: transform 50ms;
+}
+form .payment-type .container:has(input:checked) {
+  background-color: hsl(217, 100%, 97%);
+  outline: 1px hsl(243, 100%, 62%) solid;
+}
+form .payment-type .container:hover {
+  background-color: hsl(217, 100%, 97%);
+}
+form .payment-type .container:active {
+  outline: 1px hsl(243, 100%, 62%) solid;
+  transform: scale(0.99);
+}
+form .payment-type .payment-icon {
+  margin: 1em;
+  max-height: 40px;
+  max-width: 40px;
+}
+form .payment-type .payment-button {
+  flex-direction: column;
+}
+form .payment-type .payment-button > div {
+  margin: 1em;
+}
+form .payment-type .payment-button > div div {
+  margin: 0.25em 0;
+}
+form .payment-type .payment-rate {
+  color: hsl(231, 11%, 63%);
+}
+form .payment-type .discount {
+  transition: opacity 200ms;
+  opacity: 0;
+}
+form .form-container .monthly {
+  color: hsl(213, 96%, 18%);
+}
+form .form-container .yearly {
+  color: hsl(231, 11%, 63%);
+}
+form .form-container:has(.payment-toggle-switch input:checked) .container .discount {
+  opacity: 100;
+}
+form .form-container:has(.payment-toggle-switch input:checked) .monthly {
+  color: hsl(231, 11%, 63%);
+}
+form .form-container:has(.payment-toggle-switch input:checked) .yearly {
+  color: hsl(213, 96%, 18%);
+}
+form .add-on-btn {
+  outline: 1px hsl(229, 24%, 87%) solid;
+  border-radius: 5px;
+  align-items: center;
+  padding: 1.5em;
+}
+form .add-on-btn input[type=checkbox] {
+  flex: 0 0 1.5em;
+  appearance: none;
+  font: inherit;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 0.2em;
+  outline: 1px hsl(229, 24%, 87%) solid;
+  display: grid;
+  place-content: center;
+}
+form .add-on-btn input[type=checkbox]::before {
+  content: "";
+  height: 1.1em;
+  width: 1.1em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  border-radius: 0.2em;
+  box-shadow: inset 1em 1em hsl(243, 100%, 62%);
+}
+form .add-on-btn input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+form .add-on-btn input + div {
+  margin-left: 1em;
+}
+form .add-on-btn .additional-charge {
+  margin-left: auto;
+}
+form .add-on-btn:has(input:checked) {
+  outline: 1px hsl(243, 100%, 62%) solid;
+  background-color: hsl(217, 100%, 97%);
+}
+form .add-on-btn:hover {
+  background-color: hsl(217, 100%, 97%) !important;
+}
+form .final-invoice h2 {
+  margin-bottom: 0.5em;
+}
+form .final-invoice h2 + p {
+  text-decoration: underline;
+}
+form .final-invoice .colored-box {
+  background-color: hsl(217, 100%, 97%);
+  padding: 1em;
+}
+form .final-invoice .price-row {
+  align-items: center;
+}
+form .final-invoice .price-point {
+  margin-left: auto;
+}
+form .final-invoice .final-total {
+  padding: 1em;
+}
+
+#Thanks5 {
+  margin: auto;
+}
+#Thanks5 * {
+  text-align: center;
+}
+#Thanks5 .subtitle {
+  line-height: 1.5em;
+}
+#Thanks5 .container {
+  margin-top: -30px;
+  height: max-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  border: none;
+  margin: 1em 0;
+}
+
+.colored-box:has(hr + div) hr {
+  border-top: 1px solid hsl(229, 24%, 87%);
+}
+
+.additional-charge::before {
+  content: "+";
 }
 
 .payment-toggle-switch {
   background-color: hsl(217, 100%, 97%);
   align-items: center;
   justify-content: center;
+  margin: 1em 0;
 }
 .payment-toggle-switch .switch {
   margin: 8px;
@@ -192,9 +328,43 @@ form ::placeholder {
   border-radius: 50%;
 }
 
+.go-next, .submit-btn {
+  color: hsl(231, 100%, 99%);
+  border: 0;
+  outline: 0;
+  border-radius: 8px;
+  background-color: hsl(213, 96%, 18%);
+  width: fit-content;
+  padding: 1em 2em;
+}
+
+.go-back {
+  color: hsl(231, 11%, 63%);
+  border: 0;
+  outline: 0;
+  border-radius: 8px;
+  background-color: hsl(231, 100%, 99%);
+  width: fit-content;
+  padding: 1em 2em;
+}
+
+.nav-btns {
+  margin-top: auto;
+  justify-content: space-between;
+}
+.nav-btns button {
+  max-height: 3em;
+}
+
 @media only screen and (max-width: 425px) {
   form {
     background-color: hsl(231, 100%, 99%);
+  }
+  h1 {
+    font-size: 26px;
+  }
+  p, h2 {
+    font-size: 14px;
   }
   .sidebar {
     gap: 20px;
@@ -224,8 +394,12 @@ form ::placeholder {
     border-radius: 16px;
     padding: 16px;
     top: 70px;
+    box-shadow: 0px 20px 20px -10px hsl(229, 24%, 87%);
   }
   .payment-type {
+    flex-direction: column;
+  }
+  form .payment-type .payment-button {
     flex-direction: row;
   }
   .nav-btns {
@@ -254,17 +428,18 @@ form ::placeholder {
 @media screen and (min-width: 426px) {
   body {
     align-items: center;
-    justify-content: center;
     height: 100vh;
-  }
-  form {
-    flex: 1;
   }
   form input[type=text] {
     font-size: 18px;
   }
+  form .payment-type .container {
+    min-width: 150px;
+  }
   .survey-container {
     flex-direction: row;
+    background-color: hsl(231, 100%, 99%);
+    box-shadow: 0px 20px 20px -10px hsl(229, 24%, 87%);
   }
   .sidebar {
     flex-direction: column;
@@ -275,13 +450,8 @@ form ::placeholder {
     max-height: 560px;
   }
   .main-form-wrapper {
-    min-width: 570px;
-  }
-  .main-form-wrapper .form-container {
-    margin: 2em 7em;
-  }
-  .main-form-wrapper .nav-btns {
-    margin: 0em 7em;
+    margin: 2em 6em;
+    width: 100%;
   }
   .step-text-container {
     margin-left: 16px;
@@ -298,6 +468,11 @@ form ::placeholder {
 @media only screen and (min-width: 981px) {
   .sidebar {
     min-width: 270px;
+  }
+  .survey-container {
+    min-width: 1000px;
+    max-width: 1000px;
+    min-height: 600px;
   }
 }
 

@@ -42,10 +42,12 @@ const nextPrev = (x) => {
         //Hide buttons
         document.querySelector('.nav-btns').style.display = "none";
         //Show final page
-        document.getElementById('5Thanks').style.display = "block";
+        document.getElementById('Thanks5').style.display = "block";
+    } else {
+        displayTab(currentTab);
     }
     //Update page
-    displayTab(currentTab);
+    
 }
 
 const validateForm = () => {

@@ -11,6 +11,7 @@ $magnolia: hsl(217, 100%, 97%);
 $alabaster:hsl(231, 100%, 99%);
 $white: hsl(0, 0%, 100%);
 
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -21,7 +22,13 @@ $white: hsl(0, 0%, 100%);
 body {
     background-color: $magnolia;
     overflow: hidden;
-
+    justify-content: center;
+}
+p {
+    color: $cool-gray;
+}
+h2 {
+    color: $marine-blue;
 }
 .hide {
     display: none;
@@ -71,7 +78,7 @@ body {
 }
 
 .survey-container {
-    background-color: $alabaster;
+    
     padding: 16px;
 }
 label, h1 {
@@ -89,7 +96,7 @@ h1 {
     flex-direction: column;
 }
 form {
-
+    //page 1
     label {
         margin-bottom: .5em;
     }
@@ -110,43 +117,196 @@ form {
     ::placeholder {
         color: $cool-gray;
     }
+    //Page 2
+    .payment-type {
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 1em;
+        input {
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+        .container {
+            flex: 1;
+            cursor: pointer;
+            outline: 1px $light-gray solid;
+            background-color: $alabaster;
+            transition: transform 50ms;
+        }
+        .container:has(input:checked) {
+            background-color: $magnolia;
+            outline: 1px $purplish-blue solid;
+        }
+        .container:hover {
+            background-color: $magnolia;
+        }
+        .container:active {
+            outline: 1px $purplish-blue solid;
+            transform: scale(0.99);
+        }
+        .payment-icon {
+            margin: 1em;
+            max-height: 40px;
+            max-width: 40px;
+        }
+        .payment-button{
+            flex-direction: column;
+            > div {
+                margin: 1em;
+                div {
+                    margin: .25em 0
+                }
 
-}
+            }
+            
+        }
+        .payment-rate {
+            color: $cool-gray;
+        }
+        .discount {
+            transition: opacity 200ms;
+            opacity: 0;
+        }
+    }
+    .form-container{
+        .monthly {
+            color: $marine-blue;
+        }
+        .yearly {
+            color: $cool-gray;
+        }
+    }
+    //Lol I can't believe this works
+    .form-container:has(.payment-toggle-switch input:checked){
+        .container .discount {
+            opacity: 100;
+        }
+        .monthly{
+            color: $cool-gray;
+        }
+        .yearly {
+            color: $marine-blue;
+        }
 
-.go-next, .submit-btn {
-    color: $alabaster;
-    border: 0;
-    outline: 0;
-    border-radius: 8px;
-    background-color: $marine-blue;
-    width: fit-content;
-    padding: 1em 2em;
-}
+    }
+    //page 3
+    .add-on-btn{
+        outline: 1px $light-gray solid;
+        border-radius: 5px;
+        align-items: center;
+        padding: 1.5em;
 
-.go-back {
-    color: $cool-gray;
-    border: 0;
-    outline: 0;
-    border-radius: 8px;
-    background-color: $alabaster;
-    width: fit-content;
-    padding: 1em 2em;
-}
-.nav-btns {
-    margin-top: auto;
-    justify-content: space-between;
-    button {
-        max-height: 3em;
+        //custom checkbox styling
+        input[type="checkbox"]{
+            flex: 0 0 1.5em;
+            appearance: none;
+            font: inherit;
+            height: 1.5em;
+            width: 1.5em;
+            border-radius: 0.2em;
+            outline: 1px $light-gray solid;
+            display: grid;
+            place-content: center;
+        }
+        input[type="checkbox"]::before{
+            content: "";
+            height: 1.1em;
+            width: 1.1em;
+            transform:scale(0);
+            transition: 120ms transform ease-in-out;
+            border-radius: 0.2em;
+            box-shadow: inset 1em 1em $purplish-blue;
+
+        }
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+
+        input + div {
+            margin-left: 1em;
+        }
+        .additional-charge {
+            margin-left: auto;
+        }
+
+    }
+    .add-on-btn:has(input:checked){
+        outline: 1px $purplish-blue solid;
+        background-color: $magnolia;
+    }
+    .add-on-btn:hover {
+        background-color: $magnolia !important;
+    }
+    //Page 4
+    .final-invoice {
+        h2 {
+            margin-bottom: .5em;
+        }
+        h2 + p {
+            text-decoration: underline;
+        }
+        .colored-box {
+            background-color: $magnolia;
+            padding: 1em;
+        }
+        .price-row {
+            align-items: center;
+        }
+        .price-point {
+            margin-left: auto;
+        }
+        .final-total {
+            padding: 1em;
+        }
     }
 }
 
+//Page 5
+#Thanks5 {
+    margin: auto;
+    *{
+        text-align: center;
+    }
+    img {
 
+    }
+    .subtitle {
+        line-height: 1.5em;
+    }
+    .container {
+        margin-top: -30px;
+        height:max-content;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+hr {
+ border: none;
+ margin: 1em 0;
+
+}
+//Only show hr when there's extra charges
+.colored-box:has(hr + div){
+    hr {
+        border-top: 1px solid $light-gray;
+       
+    }
+    
+}
+
+.additional-charge::before {
+    content: "+";
+}
 
 //Toggle Switch logic THIS IS MODULAR
 .payment-toggle-switch {
     background-color: $magnolia;
     align-items: center;
     justify-content: center;
+    margin: 1em 0;
     //Modular Logic starts here
     .switch {
     margin: 8px;
@@ -212,7 +372,32 @@ form {
 
 }
 
+.go-next, .submit-btn {
+    color: $alabaster;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    background-color: $marine-blue;
+    width: fit-content;
+    padding: 1em 2em;
+}
 
+.go-back {
+    color: $cool-gray;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    background-color: $alabaster;
+    width: fit-content;
+    padding: 1em 2em;
+}
+.nav-btns {
+    margin-top: auto;
+    justify-content: space-between;
+    button {
+        max-height: 3em;
+    }
+}
 
 
 //MEDIA QUERIES
@@ -221,6 +406,12 @@ form {
 @media only screen and (max-width:425px) {
     form {
         background-color: $alabaster;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    p, h2 {
+        font-size: 14px;
     }
     .sidebar {
         gap: 20px;
@@ -240,7 +431,7 @@ form {
     }
     .survey-container {
         flex-direction: column;
-        background-color: none;
+        background-color: none
     }
     .step-text-container {
         display: none;
@@ -251,8 +442,13 @@ form {
         border-radius: 16px;
         padding: 16px;
         top: 70px;
+        box-shadow: 0px 20px 20px -10px $light-gray;
     }
     .payment-type {
+        flex-direction: column;
+        
+    }
+    form .payment-type .payment-button {
         flex-direction: row;
     }
     .nav-btns {
@@ -285,17 +481,22 @@ form {
 @media screen and (min-width:426px){
     body {
         align-items: center;
-        justify-content: center;
+
         height: 100vh;
     }
     form {
-        flex: 1;
         input[type="text"]{
             font-size: 18px;
+        }
+        //Page 2
+        .payment-type .container {
+            min-width: 150px;
         }
     }
     .survey-container{
         flex-direction: row;
+        background-color: $alabaster;
+        box-shadow: 0px 20px 20px -10px $light-gray;
     }
     .sidebar {
         flex-direction: column;
@@ -306,13 +507,8 @@ form {
         max-height: 560px;
     }
     .main-form-wrapper {
-        min-width: 570px;
-        .form-container {
-            margin: 2em 7em;
-        }
-        .nav-btns {
-            margin: 0em 7em;
-        }
+        margin: 2em 6em;
+        width: 100%;
     }
     .step-text-container {
         margin-left: 16px;
@@ -332,5 +528,10 @@ form {
 @media only screen and (min-width:981px){
     .sidebar {
         min-width: 270px;
+    }
+    .survey-container {
+        min-width: 1000px;
+        max-width: 1000px;
+        min-height: 600px;
     }
 }
