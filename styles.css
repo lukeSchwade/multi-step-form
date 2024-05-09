@@ -9,7 +9,6 @@
 body {
   background-color: hsl(217, 100%, 97%);
   overflow: hidden;
-  justify-content: center;
 }
 
 p {
@@ -441,6 +440,7 @@ hr {
 @media screen and (min-width: 426px) {
   body {
     align-items: center;
+    justify-content: center;
     height: 100vh;
   }
   form input[type=text] {
