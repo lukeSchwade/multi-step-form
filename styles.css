@@ -20,7 +20,7 @@ h2 {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .form-container {
@@ -90,6 +90,10 @@ h1 {
 
 .personal-info-container, .main-form-wrapper {
   flex-direction: column;
+}
+
+input.invalid {
+  outline: 2px hsl(354, 84%, 57%) solid !important;
 }
 
 form label {
@@ -239,11 +243,23 @@ form .final-invoice .colored-box {
 form .final-invoice .price-row {
   align-items: center;
 }
+form .final-invoice hr ~ .price-row {
+  margin-bottom: 1em;
+  font-size: 14px;
+}
+form .final-invoice hr ~ .price-row .price-point {
+  color: hsl(231, 11%, 63%);
+}
 form .final-invoice .price-point {
   margin-left: auto;
 }
 form .final-invoice .final-total {
   padding: 1em;
+}
+form .final-invoice .final-charge {
+  font-size: 18px;
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
 }
 
 #Thanks5 {
@@ -267,7 +283,7 @@ hr {
   margin: 1em 0;
 }
 
-.colored-box:has(hr + div) hr {
+.colored-box:has(hr ~ .price-row:not(.hide)) hr {
   border-top: 1px solid hsl(229, 24%, 87%);
 }
 
@@ -332,6 +348,10 @@ hr {
 }
 .payment-toggle-switch .slider.round:before {
   border-radius: 50%;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .go-next, .submit-btn {

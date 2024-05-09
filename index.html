@@ -62,19 +62,19 @@
         <!-- Step 1 start -->
       <form id="fullForm" autocomplete="on">
         
-          <div class="form-container" id="PersonalInfo1">
+          <div class="form-container validate" id="PersonalInfo1">
             <h1>Personal info</h1>
             <div class="subtitle">Please provide your name, email address, and phone number.</div>
           
             <div class="flex-container personal-info-container">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="e.g. Stephen King" autocomplete="name" required>
+              <input type="text" id="name" name="name" placeholder="e.g. Stephen King" autocomplete="name" required oninput="this.className = ''">
             
               <label for="email">Email Address</label>
-              <input type="text" id="email" name="email" placeholder="e.g stephenking@lorem.com" autocomplete="email" required>
+              <input type="text" id="email" name="email" placeholder="e.g stephenking@lorem.com" autocomplete="email" required oninput="this.className = ''">
             
               <label for="telephone">Phone Number</label>
-              <input type="text" id="telephone" name="tel" placeholder="e.g. +1 234 567 890" autocomplete="tel" required>
+              <input type="text" id="telephone" name="tel" placeholder="e.g. +1 234 567 890" autocomplete="tel" required oninput="this.className = ''">
               
             </div>
           
@@ -91,13 +91,13 @@
           
             <div class="payment-type flex-container">
               <div class="container round-edge">
-                  <input type="radio" id="arcade-plan" name="planType"  value="arcade" checked>
+                  <input type="radio" id="arcade-plan" name="planType"  value="Arcade" checked>
                     <label for="arcade-plan">
                       <div class="flex-container payment-button">
                         <img class="payment-icon" src="./assets/images/icon-arcade.svg" alt="arcade">
                         <div>
                           <h2>Arcade</h2>
-                          <div class="payment-rate rate">$9/mo</div>
+                          <div class="payment-rate rateAbbrev">$9/mo</div>
                           <div class="discount">2 months free</div>
                         </div>
                       </div>
@@ -105,13 +105,13 @@
                   </input>
               </div>
               <div class="container round-edge">
-                  <input type="radio" id="advanced-plan" name="planType" value="advanced">
+                  <input type="radio" id="advanced-plan" name="planType" value="Advanced">
                     <label for="advanced-plan">
                       <div class="flex-container payment-button">
                         <img class="payment-icon" src="./assets/images/icon-advanced.svg" alt="advanced">
                         <div>
                           <h2>Advanced</h2>
-                          <div class="payment-rate rate">$12/mo</div>
+                          <div class="payment-rate rateAbbrev">$12/mo</div>
                           <div class="discount">2 months free</div>
                         </div>
                       </div>
@@ -119,13 +119,13 @@
                   </input>
               </div>
               <div class="container round-edge">
-                <input type="radio" id="pro-plan" name="planType" value="pro">
+                <input type="radio" id="pro-plan" name="planType" value="Pro">
                   <label for="pro-plan">
                     <div class="flex-container payment-button">
                       <img class="payment-icon" src="./assets/images/icon-pro.svg" alt="pro">
                       <div>
                         <h2>Pro</h2>
-                        <div class="payment-rate rate">$15/mo</div>
+                        <div class="payment-rate rateAbbrev">$15/mo</div>
                         <div class="discount">2 months free</div>
                       </div>
                     </div>
@@ -159,30 +159,30 @@
             <div class="subtitle">Add-ons help enhance your gaming experience.</div>
           
             <label class="add-on-btn flex-container">
-              <input class="add-on-checkbox" type="checkbox" name="multiplayer">
+              <input class="add-on-checkbox" type="checkbox" name="multiplayer" value="1">
                 <div>
                   <h2>Online service</h2>
                   <p>Access to multiplayer games</p>
                 </div>
-                <div class="additional-charge rate">$1/mo</div>
+                <div class="additional-charge rateAbbrev">$1/mo</div>
             </label>
 
             <label class="add-on-btn flex-container">
-              <input class="add-on-checkbox" type="checkbox" name="storage">
+              <input class="add-on-checkbox" type="checkbox" name="storage" value="2">
               <div>
                 <h2>Larger storage</h2>
                 <p>Extra 1TB of cloud save</p>
               </div>
-              <div class="additional-charge">$2/mo</div>
+              <div class="additional-charge rateAbbrev">$2/mo</div>
             </label>
           
             <label class="add-on-btn flex-container">
-              <input class = "add-on-checkbox" type="checkbox" name="customProfile">
+              <input class = "add-on-checkbox" type="checkbox" name="customProfile" value="2">
               <div>
                 <h2>Customizable Profile</h2>
                 <p>Custom theme on your profile</p>
               </div>
-              <div class="additional-charge rate">$2/mo</div>
+              <div class="additional-charge rateAbbrev">$2/mo</div>
             </label>
           
 
@@ -197,24 +197,31 @@
             <div class="subtitle">Double-check everything looks OK before confirming.</div>
             <div class="final-invoice">
               <div class="colored-box">
-                
                 <div class="flex-container price-row">
                   <div>
-                    <h2>Plan (Interval)</h2>
-                    <p>Change</p>
+                    <h2 class="plan-name rateFull">Plan (monthly)</h2>
+                    <p class="pointer">Change</p>
                   </div>
-                  <h2 class="plan-total price-point">$9/mo</h2>
+                  <h2 class="plan-total price-point rateAbbrev">$9/mo</h2>
                 </div>
                 <hr>
-                <div class="flex-container price-row">
-                  <p>This is a placeholder</p>
-                  <div class="price-point additional-charge">$9/mo</div>
+                <div class="flex-container price-row hide multiplayer">
+                  <p class="add-on-name">Online Service</p>
+                  <div class="price-point additional-charge rateAbbrev">$1/mo</div>
+                </div>
+                <div class="flex-container price-row hide storage">
+                  <p>Larger Storage</p>
+                  <div class="price-point additional-charge rateAbbrev">$2/mo</div>
+                </div>
+                <div class="flex-container price-row hide customProfile">
+                  <p>Customizable Profile</p>
+                  <div class="price-point additional-charge rateAbbrev">$2/mo</div>
                 </div>
                 
               </div>
-              <div class="final-total">
-                <p>Total (per <span class="interval">month</span>)</p>
-                <div></div>
+              <div class="final-total flex-container price-row">
+                <p>Total (per <span class="rateFull">month</span>)</p>
+                <div class="price-point final-charge rateAbbrev">$10/mo</div>
               </div>
             </div>
             <!-- Dynamically add subscription and add-on selections here -->

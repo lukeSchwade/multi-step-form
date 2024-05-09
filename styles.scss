@@ -31,7 +31,7 @@ h2 {
     color: $marine-blue;
 }
 .hide {
-    display: none;
+    display: none !important;
 }
 .form-container {
     display: none;
@@ -78,7 +78,6 @@ h2 {
 }
 
 .survey-container {
-    
     padding: 16px;
 }
 label, h1 {
@@ -94,6 +93,9 @@ h1 {
 }
 .personal-info-container, .main-form-wrapper {
     flex-direction: column;
+}
+input.invalid {
+    outline: 2px $strawberry-red solid !important;
 }
 form {
     //page 1
@@ -264,11 +266,23 @@ form {
         .price-row {
             align-items: center;
         }
+        hr ~ .price-row{
+            margin-bottom: 1em;
+            font-size: 14px;
+            .price-point {
+                color: $cool-gray;
+            }
+        }
         .price-point {
             margin-left: auto;
         }
         .final-total {
             padding: 1em;
+        }
+        .final-charge {
+            font-size: 18px;
+            color: $purplish-blue;
+            font-weight: 700;
         }
     }
 }
@@ -278,9 +292,6 @@ form {
     margin: auto;
     *{
         text-align: center;
-    }
-    img {
-
     }
     .subtitle {
         line-height: 1.5em;
@@ -299,8 +310,8 @@ hr {
  margin: 1em 0;
 
 }
-//Only show hr when there's extra charges
-.colored-box:has(hr + div){
+//Only show hr if there's at least one unhidden element preceding it
+.colored-box:has(hr ~ .price-row:not(.hide)){
     hr {
         border-top: 1px solid $light-gray;
        
@@ -383,6 +394,9 @@ hr {
 
 }
 
+.pointer {
+    cursor: pointer;
+}
 .go-next, .submit-btn {
     color: $alabaster;
     border: 0;
