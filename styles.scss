@@ -126,6 +126,7 @@ form {
             opacity: 0;
             height: 0;
             width: 0;
+            position: absolute;
         }
         .container {
             flex: 1;
@@ -155,7 +156,11 @@ form {
             > div {
                 margin: 1em;
                 div {
-                    margin: .25em 0
+                    margin: .25em 0;
+                }
+                h2, .payment-rate {
+                    transition-duration: 200ms;
+                    transform: translateY(8px);
                 }
 
             }
@@ -179,9 +184,15 @@ form {
     }
     //Lol I can't believe this works
     .form-container:has(.payment-toggle-switch input:checked){
-        .container .discount {
-            opacity: 100;
+        .container {
+            .discount {
+                opacity: 100;
+            }
+            h2, .payment-rate {
+                transform: translateY(0);
+            }
         }
+        
         .monthly{
             color: $cool-gray;
         }
@@ -275,7 +286,7 @@ form {
         line-height: 1.5em;
     }
     .container {
-        margin-top: -30px;
+        
         height:max-content;
         flex-direction: column;
         justify-content: center;
@@ -446,6 +457,12 @@ hr {
     }
     .payment-type {
         flex-direction: column;
+        .container {
+            max-height: 100px;
+            .discount {
+                font-size: 14px;
+            }
+        }
         
     }
     form .payment-type .payment-button {
@@ -453,7 +470,7 @@ hr {
     }
     .nav-btns {
         position: fixed;
-        bottom: 20px;
+        bottom: 0;
         right: 0;
         width: 100%;
         height: 60px;
@@ -521,7 +538,12 @@ hr {
         font-size: 14px;
         font-weight: 700;
     }
-
+    #Thanks5 {
+        .container{
+            margin-top: -30px;
+        }
+        
+    }
 }
 
 //Larger Devices
