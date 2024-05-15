@@ -6,11 +6,13 @@ let totalCharge = 0;
 let addonsTotal = 0
 const backBtn = document.querySelector('.nav-btns > .go-back');
 const nextBtn = document.querySelector('.nav-btns > .go-next');
-const fullForm = document.getElementById('fullForm')
+const fullForm = document.getElementById('fullForm');
+const changePlanBtn = document.querySelector('.change-btn');
 const initializePage = () => {
     //Logic for everything that happens on page load
     backBtn.addEventListener ('click', () => {nextPrev(-1)});
     nextBtn.addEventListener ('click', () => {nextPrev(1)});
+    changePlanBtn.addEventListener('click', () => nextPrev(-2));
     intervalCheckbox.addEventListener('change', function() {
         //Change whether yearly plan is selected or not
         if(this.checked){
